@@ -11,8 +11,11 @@ const LEGO_URL =
 const GROUP_URL =
   'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png';
 
-const ABOUT_TEXT =
-  "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!";
+const ABOUT_TEXT_EN =
+  "I’m a student who enjoys learning and experimenting with AI, exploring how it can be applied to create value in work, design, and digital projects. I enjoy discovering new technologies and finding practical ways to use them to solve problems, improve workflows, and turn ideas into reality.";
+
+const ABOUT_TEXT_TH =
+  'ผมเป็นนักศึกษาที่ชื่นชอบการเรียนรู้และทดลองใช้ AI เพื่อนำมาประยุกต์ใช้ให้เกิดประโยชน์ในการทำงาน การออกแบบ และการสร้างสรรค์ผลงานดิจิทัล ผมสนุกกับการเรียนรู้เทคโนโลยีใหม่ ๆ และมองหาวิธีนำมันมาใช้เพื่อช่วยแก้ปัญหา เพิ่มประสิทธิภาพการทำงาน และเปลี่ยนไอเดียให้เกิดขึ้นจริง';
 
 export default function AboutSection() {
   return (
@@ -86,15 +89,28 @@ export default function AboutSection() {
           About me
         </h2>
 
-        <AnimatedText
-          text={ABOUT_TEXT}
-          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px]"
-          style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
-        />
+        <div className="flex flex-col items-center gap-6 max-w-[560px]">
+          <AnimatedText
+            text={ABOUT_TEXT_EN}
+            className="text-[#D7E2EA] font-medium text-center leading-relaxed"
+            style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
+          />
+
+          {/* Thai translation rendered as plain text (not char-split)
+              so Thai vowel/tone-mark shaping renders correctly */}
+          <FadeIn delay={0.2}>
+            <p
+              className="text-[#D7E2EA]/80 font-light text-center leading-relaxed"
+              style={{ fontSize: 'clamp(0.9rem, 1.7vw, 1.15rem)' }}
+            >
+              {ABOUT_TEXT_TH}
+            </p>
+          </FadeIn>
+        </div>
       </FadeIn>
 
       <div className="mt-16 sm:mt-20 md:mt-24">
-        <ContactButton />
+        <ContactButton href="#contact" />
       </div>
     </section>
   );

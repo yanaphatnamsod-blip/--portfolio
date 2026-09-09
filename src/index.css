@@ -36,16 +36,55 @@ body,
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
     90deg,
     transparent,
     #b600a8,
     #7621b0,
     #be4c00,
-    transparent
+    transparent,
+    #b600a8,
+    #7621b0
   );
-  opacity: 0.7;
+  background-size: 200% 100%;
+  opacity: 0.8;
+  animation: navbarShimmer 6s linear infinite;
+}
+
+@keyframes navbarShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Nav links: gradient underline + glow on hover */
+.nav-link-fancy {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-fancy::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #b600a8, #7621b0, #be4c00);
+  transition: width 0.3s ease;
+}
+
+.nav-link-fancy:hover::after {
+  width: 100%;
+}
+
+.nav-link-fancy:hover {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(182, 0, 168, 0.55);
 }
 
 /* Animated glow behind hero heading */

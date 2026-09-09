@@ -1,7 +1,8 @@
 import FadeIn from './FadeIn';
 import ContactButton from './ContactButton';
+import ParticleField from './ParticleField';
 
-const NAV_LINKS = ['About', 'Price', 'Projects', 'Contact'];
+const NAV_LINKS = ['About', 'Services', 'Projects', 'Contact'];
 
 export default function HeroSection() {
   return (
@@ -9,6 +10,9 @@ export default function HeroSection() {
       className="h-screen flex flex-col relative"
       style={{ overflowX: 'clip' }}
     >
+      {/* Floating particles */}
+      <ParticleField />
+
       {/* Animated glow behind the heading */}
       <div className="hero-glow" />
 
@@ -19,7 +23,7 @@ export default function HeroSection() {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] transition-opacity duration-200 hover:opacity-70"
+              className="nav-link-fancy text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] transition-all duration-200 hover:opacity-100 opacity-90"
             >
               {link}
             </a>
@@ -52,7 +56,7 @@ export default function HeroSection() {
         </FadeIn>
 
         <FadeIn delay={0.5} y={20}>
-          <ContactButton />
+          <ContactButton href="#contact" />
         </FadeIn>
       </div>
     </section>
