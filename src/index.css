@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  background: #0c0c0c;
+  font-family: 'Kanit', sans-serif;
+}
+
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navbar glass/decorative styles */
+.navbar-wrap {
+  position: relative;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 4px 30px rgba(182, 0, 168, 0.12);
+}
+
+.navbar-glow-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #b600a8,
+    #7621b0,
+    #be4c00,
+    transparent
+  );
+  opacity: 0.7;
+}
+
+/* Animated glow behind hero heading */
+.hero-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  max-width: 90vw;
+  max-height: 90vw;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(182, 0, 168, 0.35) 0%,
+    rgba(118, 33, 176, 0.25) 40%,
+    transparent 70%
+  );
+  filter: blur(90px);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  animation: heroGlowMove 14s ease-in-out infinite;
+}
+
+@keyframes heroGlowMove {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(-40%) translateY(4%) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
